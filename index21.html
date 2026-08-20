@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Friends</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 750px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #4a00e0;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        /* সার্চ বক্স ডিজাইন */
+        .search-box {
+            width: 100%;
+            padding: 14px 20px;
+            margin-bottom: 25px;
+            border: 2px solid #764ba2;
+            border-radius: 30px;
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-box:focus {
+            box-shadow: 0 0 10px rgba(118, 75, 162, 0.4);
+        }
+        /* বন্ধুর কার্ড ডিজাইন - রঙিন ব্যাকগ্রাউন্ড ও ছবি সহ */
+        .friend-card {
+            background: linear-gradient(to right, #fbc531, #fffa65);
+            border: none;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .friend-card:nth-child(even) {
+            background: linear-gradient(to right, #00d2d3, #54a0ff);
+            color: white;
+        }
+        .friend-card:nth-child(odd) {
+            background: linear-gradient(to right, #ff9ff3, #f368e0);
+            color: white;
+        }
+        .friend-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        /* বন্ধুর ছবি গোল করার স্টাইল */
+        .friend-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .friend-info {
+            flex-grow: 1;
+        }
+        .friend-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        /* ডিটেইলস লুকানো থাকবে */
+        .friend-details {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .friend-details p {
+            margin: 4px 0;
+        }
+        .toggle-icon {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>আমার বন্ধুদের রঙিন দুনিয়া</h1>
+        <p class="subtitle">নাম দিয়ে সার্চ করুন অথবা নামের ওপর ক্লিক করে বিস্তারিত দেখুন!</p>
+        
+        <!-- লাইভ সার্চ বক্স -->
+        <input type="text" id="search" class="search-box" placeholder="বন্ধুর নাম লিখে সার্চ করুন...">
+        
+        <div id="friend-list">
+            
+            <!-- বন্ধু ১ -->
+            <div class="friend-card" onclick="toggleDetails(this)">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100" alt="Friend" class="friend-img">
+                <div class="friend-info">
+                    <div class="friend-name">Shishir Banik</div>
+                    <div>বয়স: ২১ | পেশা: শিক্ষার্থী</div>
+                    <div class="friend-details">
+                        <p><strong>চেহারা:</strong> চোদনা মার্কা </p>
+                        <p><strong>পছন্দ:</strong> পর্ন দেখতে পছন্দ করে </p>
+                        <p><strong>লোকেশন:</strong> ঢাকা, বাংলাদেশ</p>
+                    </div>
+                </div>
+                <span class="toggle-icon">➕</span>
+            </div>
+
+            <!-- বন্ধু ২ -->
+            <div class="friend-card" onclick="toggleDetails(this)">
+                <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100" alt="Friend" class="friend-img">
+                <div class="friend-info">
+                    <div class="friend-name">নাফিস আহমেদ</div>
+                    <div>বয়স: ১৮ | পেশা: বেকার</div>
+                    <div class="friend-details">
+                        <p><strong>চেহারা:</strong> লম্বু, শান্ত স্বভাবের।</p>
+                        <p><strong>পছন্দ:</strong> মেয়েদের বুব্ছ খাওয়া।</p>
+                        <p><strong>লোকেশন:</strong> বাংলাদেশ</p>
+                    </div>
+                </div>
+                <span class="toggle-icon">➕</span>
+            </div>
+
+            <!-- বন্ধু ৩ -->
+            <div class="friend-card" onclick="toggleDetails(this)">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="Friend" class="friend-img">
+                <div class="friend-info">
+                    <div class="friend-name">তাহসিন</div>
+                    <div>বয়স: ২১ | পেশা: বেকার</div>
+                    <div class="friend-details">
+                        <p><strong>চেহারা:</strong> খাটো, সভাব এমন যেন ভাজা মাছ উল্টে খেতে পারেনা</p>
+                        <p><strong>পছন্দ:</strong> বিবাহিত মহিলাদের প্রতি,যতি স্বামী মারা যায় তাকে প্রস্তাব দিতে চায়</p>
+                        <p><strong>লোকেশন:</strong> বাংলাদেশ</p>
+                    </div>
+                </div>
+                <span class="toggle-icon">➕</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- সার্চ এবং ক্লিক হ্যান্ডেল করার স্ক্রিপ্ট -->
+    <script>
+        // কার্ড ক্লিক করলে ডিটেইলস ওপেন/ক্লোজ হবে
+        function toggleDetails(card) {
+            let details = card.querySelector('.friend-details');
+            let icon = card.querySelector('.toggle-icon');
+            
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+                icon.innerText = '➕';
+            } else {
+                details.style.display = 'block';
+                icon.innerText = '➖';
+            }
+        }
+
+        // সার্চ করার জাভাস্ক্রিপ্ট কোড
+        document.getElementById('search').addEventListener('input', function(e) {
+            let filter = e.target.value.toLowerCase();
+            let cards = document.querySelectorAll('.friend-card');
+            
+            cards.forEach(card => {
+                let name = card.querySelector('.friend-name').innerText.toLowerCase();
+                if (name.includes(filter)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
